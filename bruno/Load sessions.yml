@@ -1,11 +1,11 @@
 info:
   name: Load sessions
   type: http
-  seq: 5
+  seq: 4
 
 http:
   method: GET
-  url: localhost:3001/auth/sessions
+  url: "{{host}}/auth/sessions"
   auth: inherit
 
 settings:

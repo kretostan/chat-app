@@ -1,11 +1,11 @@
 info:
   name: Remove session
   type: http
-  seq: 6
+  seq: 5
 
 http:
   method: POST
-  url: localhost:3001/auth/sessions/:id/logout
+  url: "{{host}}/auth/sessions/:id/logout"
   params:
     - name: id
       value: '"random"'
