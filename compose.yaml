@@ -6,6 +6,7 @@ services:
     environment:
       - NODE_ENV=production
       - DATABASE_URL=file:/app/data/chat.db
+      - PORT=3000
     ports:
       - "3000"
     volumes:
