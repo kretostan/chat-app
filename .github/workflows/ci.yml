@@ -76,7 +76,7 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Install pnpm and setup Node.js
-        uses: pnpm/pnpm-setup@v1
+        uses: pnpm/setup@v1
         with:
           version: 11
           runtime: node@22
