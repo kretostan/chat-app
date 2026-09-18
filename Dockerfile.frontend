@@ -13,8 +13,14 @@ RUN corepack enable
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY frontend/package.json ./frontend/package.json
 COPY backend/package.json ./backend/package.json
+COPY packages/shared/package.json ./packages/shared/package.json
+COPY packages/shared/tsconfig.json ./packages/shared/tsconfig.json
 
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile --ignore-scripts
+RUN pnpm rebuild @nestjs/core @swc/core better-sqlite3
+
+COPY packages/shared/src ./packages/shared/src
+RUN pnpm --filter shared build
 
 # ==========================================
 # 2. ETAP: DEVELOPMENT
@@ -31,7 +37,8 @@ FROM deps AS build
 WORKDIR /app
 COPY frontend ./frontend
 WORKDIR /app/frontend
-RUN pnpm build
+ARG VITE_API_URL
+RUN echo "VITE_API_URL=${VITE_API_URL:-http://backend:3000}" > .env && pnpm build
 
 # ==========================================
 # 4. ETAP: PRODUCTION (Nginx)

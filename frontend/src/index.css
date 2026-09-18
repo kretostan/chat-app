@@ -1,18 +1,19 @@
 @import "tailwindcss";
 
+/* Dark theme (default) */
 :root {
   /* === BRAND COLORS === */
-  --primary: #007bff;
-  --secondary: #0056b3;
-  --tertiary: #3395ff;
+  --primary: #2dd09b;
+  --secondary: #1fa87a;
+  --tertiary: #5eeac3;
 
   /* === SURFACES (BACKGROUNDS) === */
-  --surface-base: #121212;
-  --surface-section: #242424;
+  --surface-base: #08090d;
+  --surface-section: #11131a;
   --surface-elevated: #2d2d2d;
 
-  --surface-input: #202020;
-  --surface-footer: #0d0d0d;
+  --surface-input: #161820;
+  --surface-footer: #050608;
 
   /* === CHAT SURFACES === */
   --surface-message-user: #2d323a;
@@ -20,31 +21,71 @@
   --surface-message-system: #2a2a2a;
 
   /* === BORDERS === */
-  --border-default: #3a3a3a;
-  --border-input: #404040;
+  --border-default: #1c1f28;
+  --border-input: #282b35;
 
   --border-message-user: #3a3a3a;
   --border-message-answer: #2a8a57;
   --border-message-system: #3a3a3a;
 
   /* === TEXT / FOREGROUND === */
-  --foreground-primary: #e6e6e6;
-  --foreground-secondary: #a0a0a0;
-  --foreground-muted: #7a7a7a;
+  --foreground-primary: #e4e1dc;
+  --foreground-secondary: #7a7570;
+  --foreground-muted: #5c5852;
 
   /* === STATES === */
-  --hover: #333333;
-  --active: #3d3d3d;
+  --hover: #1a1d26;
+  --active: #222530;
 
-  --error: #ff4d4d;
+  --error: #f87171;
   --success: #2ea043;
 
   /* === ELEVATION === */
-  --shadow-light: 0 4px 12px rgba(255, 255, 255, 0.05);
-  --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.5);
 
   /* === OVERLAY === */
   --overlay-default: rgba(0, 0, 0, 0.6);
+}
+
+/* Light theme overrides */
+[data-theme="light"] {
+  --primary: #1db87f;
+  --secondary: #19a374;
+  --tertiary: #2dd09b;
+
+  --surface-base: #fcfdfc;
+  --surface-section: #f5f6f4;
+  --surface-elevated: #eff0ed;
+
+  --surface-input: #eef0ec;
+  --surface-footer: #eaf0eb;
+
+  --surface-message-user: #dcece3;
+  --surface-message-answer: #2db87f;
+  --surface-message-system: #e5e7e4;
+
+  --border-default: #e4e7e1;
+  --border-input: #d6dac8;
+
+  --border-message-user: #c2dcc9;
+  --border-message-answer: #8aefbf;
+  --border-message-system: #d0d5cd;
+
+  --foreground-primary: #141713;
+  --foreground-secondary: #6e756b;
+  --foreground-muted: #9ea69a;
+
+  --hover: #f0f2ee;
+  --active: #e8ead6;
+
+  --error: #dc2626;
+  --success: #16a34a;
+
+  --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  --overlay-default: rgba(0, 0, 0, 0.35);
 }
 
 @theme inline {
@@ -71,7 +112,7 @@
   --color-border-input: var(--border-input);
 
   --color-border-message-user: var(--border-message-user);
-  --color-border-message-answer: var(--color-border-message-answer);
+  --color-border-message-answer: var(--border-message-answer);
   --color-border-message-system: var(--border-message-system);
 
   /* === TEXT === */
@@ -88,15 +129,63 @@
 
   /* === SHADOWS === */
   --shadow-light: var(--shadow-light);
-  --shadow-medium: var(--light-medium);
+  --shadow-medium: var(--shadow-medium);
 
   /* === OVERLAY === */
   --color-overlay-default: var(--overlay-default);
+
+  /* === TYPOGRAPHY === */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Inter Variable", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   min-height: 100vh;
-  background: var(--surface-base);
-  color: var(--foreground-primary);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-surface-base);
+  color: var(--color-foreground-primary);
+  font-family: var(--font-body);
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 100px #161820 inset !important;
+  -webkit-text-fill-color: var(--color-foreground-primary) !important;
+  outline-color: var(--color-primary);
+}
+
+/* === AUTH BREATHING INDICATOR === */
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+}
+
+.auth-breathe {
+  animation: breathe 4s ease-in-out infinite;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  box-shadow: 0 0 16px var(--primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-breathe {
+    animation: none;
+    opacity: 0.7;
+  }
+}
+
+/* === AUTH CARD SHADOWS === */
+.auth-card-shadow {
+  box-shadow: var(--shadow-light);
 }

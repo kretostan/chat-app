@@ -1,0 +1,5 @@
+name: Development
+variables:
+  - name: host
+    value: localhost:3001/api
+    description: ""

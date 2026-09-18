@@ -2,12 +2,20 @@ node_modules
 
 dist
 
+.env
+.env.development
 !.env.example
+!.env.test
 
-.env*
+data/
 
 .DS_Store
 
 .idea
 
 .pnpm-store
+
+*.tsbuildinfo
+
+bruno/.env
+bruno/.bruno

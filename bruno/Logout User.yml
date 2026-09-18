@@ -1,0 +1,22 @@
+info:
+  name: Logout User
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{host}}/auth/logout"
+  body:
+    type: text
+    data: |-
+      {
+          "login": "{{email}}",
+          "password": "{{password}}"
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

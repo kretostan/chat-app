@@ -2,11 +2,10 @@ import { Injectable } from "@nestjs/common";
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return "Hello World!";
-  }
-
-  healthCheck(): { status: string } {
-    return { status: "ok" };
+  getRoot(): { name: string; status: string } {
+    return {
+      name: "Chat App API",
+      status: "running",
+    };
   }
 }

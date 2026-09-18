@@ -10,11 +10,21 @@ ENV PATH="$PNPM_HOME:$PATH"
 
 RUN corepack enable
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 \
+    build-essential
+
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY frontend/package.json ./frontend/package.json
 COPY backend/package.json ./backend/package.json
+COPY packages/shared/package.json ./packages/shared/package.json
+COPY packages/shared/tsconfig.json ./packages/shared/tsconfig.json
 
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile --ignore-scripts
+RUN pnpm rebuild @nestjs/core @swc/core better-sqlite3
+
+COPY packages/shared/src ./packages/shared/src
+RUN pnpm --filter shared build
 
 # ==========================================
 # 2. ETAP: DEVELOPMENT
@@ -50,5 +60,6 @@ RUN corepack enable && corepack prepare pnpm@11.7.0 --activate
 # Kopiujemy tylko to, co wygenerował etap deploy (bez pnpm-store i devDependencies!)
 COPY --from=deploy /prod/backend ./
 COPY --from=build /app/backend/dist ./dist
+COPY --from=build /app/backend/drizzle ./drizzle
 EXPOSE 3000
 CMD ["pnpm", "start:prod"]
