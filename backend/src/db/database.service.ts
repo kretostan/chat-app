@@ -26,4 +26,8 @@ export class DatabaseService implements OnModuleInit {
   async onModuleInit() {
     migrate(this.db, { migrationsFolder: "drizzle" });
   }
+
+  ping(): void {
+    this.db.run("SELECT 1");
+  }
 }
