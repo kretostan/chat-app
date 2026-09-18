@@ -142,7 +142,7 @@ jobs:
           docker compose -p chat-app -f compose.yaml -f compose.ci.yaml up -d
           sleep 5
           docker compose ps
-          curl --fail http://localhost:3000/health || exit 1
+          curl --fail http://localhost:3000/api/health || exit 1
 
       - name: Clean up
         if: always()
