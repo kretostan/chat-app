@@ -34,9 +34,18 @@ importers:
       '@nestjs/platform-fastify':
         specifier: ^11.1.28
         version: 11.1.28(@nestjs/common@11.1.19(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(@nestjs/core@11.1.19)
+      '@nestjs/platform-ws':
+        specifier: ^11.1.27
+        version: 11.1.27(@nestjs/common@11.1.19(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(@nestjs/websockets@11.1.27)(rxjs@7.8.2)
       '@nestjs/terminus':
         specifier: ^12.0.0
         version: 12.0.0(@nestjs/common@11.1.19(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(@nestjs/core@11.1.19)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/throttler':
+        specifier: ^6.5.0
+        version: 6.5.0(@nestjs/common@11.1.19(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(@nestjs/core@11.1.19)(reflect-metadata@0.2.2)
+      '@nestjs/websockets':
+        specifier: ^11.1.27
+        version: 11.1.27(@nestjs/common@11.1.19(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(@nestjs/core@11.1.19)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       bcrypt:
         specifier: ^6.0.0
         version: 6.0.0
@@ -67,6 +76,9 @@ importers:
       shared:
         specifier: workspace:*
         version: link:../packages/shared
+      ws:
+        specifier: ^8.21.3
+        version: 8.21.3
       zod:
         specifier: ^4.4.3
         version: 4.4.3
@@ -77,21 +89,12 @@ importers:
       '@nestjs/cli':
         specifier: ^11.0.0
         version: 11.0.21(@swc/cli@0.6.0(@swc/core@1.15.33)(chokidar@4.0.3)(supports-color@8.1.1))(@swc/core@1.15.33)(@types/node@22.19.19)(esbuild@0.28.0)(lightningcss@1.32.0)(postcss@8.5.14)(prettier@3.8.3)(uglify-js@3.19.3)
-      '@nestjs/platform-ws':
-        specifier: ^11.1.27
-        version: 11.1.27(@nestjs/common@11.1.19(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(@nestjs/websockets@11.1.27)(rxjs@7.8.2)
       '@nestjs/schematics':
         specifier: ^11.0.0
         version: 11.1.0(chokidar@4.0.3)(prettier@3.8.3)(typescript@5.9.3)
       '@nestjs/testing':
         specifier: ^11.0.1
         version: 11.1.19(@nestjs/common@11.1.19(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(@nestjs/core@11.1.19)(@nestjs/platform-express@11.1.19)
-      '@nestjs/throttler':
-        specifier: ^6.5.0
-        version: 6.5.0(@nestjs/common@11.1.19(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(@nestjs/core@11.1.19)(reflect-metadata@0.2.2)
-      '@nestjs/websockets':
-        specifier: ^11.1.27
-        version: 11.1.27(@nestjs/common@11.1.19(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(@nestjs/core@11.1.19)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@swc/cli':
         specifier: ^0.6.0
         version: 0.6.0(@swc/core@1.15.33)(chokidar@4.0.3)(supports-color@8.1.1)
@@ -5696,6 +5699,18 @@ packages:
       utf-8-validate:
         optional: true
 
+  ws@8.21.3:
+    resolution: {integrity: sha512-201TZ/kPWxoPr/OKWjquZR1SWKXcvxdH+e1xrx89b3YbmzLMFCLfnaG1HFIgWzJOEWZ7MvpK++odZufgYR50Rw==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+
   xml-name-validator@5.0.0:
     resolution: {integrity: sha512-EvGK8EJ3DhaHfbRlETOWAS5pO9MZITeauHKJyb8wyajUfQUenkIg2MvLDTZ4T/TgIcm3HU0TFBgWWboAZ30UHg==}
     engines: {node: '>=18'}
@@ -11215,6 +11230,8 @@ snapshots:
       signal-exit: 3.0.7
 
   ws@8.21.0: {}
+
+  ws@8.21.3: {}
 
   xml-name-validator@5.0.0: {}
 
