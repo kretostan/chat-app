@@ -58,7 +58,7 @@ const LoginForm = () => {
       localStorage.setItem("sessions", JSON.stringify(recentUsers));
     }
 
-    navigate({ to: "/app", replace: true });
+    navigate({ to: "/app/chat", replace: true });
   };
 
   const fields = [

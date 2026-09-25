@@ -20,6 +20,8 @@ export default function ThemeSettingsPage({
     { pref: "system", label: "System", desc: "Dopasuj do ustawień systemu" },
   ];
 
+  // FIX: Light/Dark <-> System wywołuje horizontal scroll bara
+
   return (
     <div className="flex flex-col h-full w-full overflow-y-auto">
       <div className="max-w-md mx-auto w-full">
@@ -70,7 +72,7 @@ export default function ThemeSettingsPage({
           </svg>
           <p className="text-xs text-foreground-muted leading-relaxed">
             {current === "system"
-              ? `Obecnie: ${resolvedTheme.charAt(0).toUpperCase() + resolvedTheme.slice(1)} (zgodnie z systemem)`
+              ? `Obecnie: ${resolvedTheme.charAt(0).toUpperCase() + resolvedTheme.slice(1)} (system)`
               : `Aktualny motyw: ${resolvedTheme.charAt(0).toUpperCase() + resolvedTheme.slice(1)}`}
           </p>
         </div>

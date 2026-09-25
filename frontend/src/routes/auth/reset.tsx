@@ -5,15 +5,17 @@ import BreathingIndicator from "@/components/auth/BreathingIndicator";
 import Footer from "@/components/auth/Footer";
 import Input from "@/components/auth/form/Input";
 import Header from "@/components/auth/Header";
+import { authenticate } from "@/lib/AuthGuard";
 
 export const Route = createFileRoute("/auth/reset")({
+  beforeLoad: authenticate,
   component: RouteComponent,
 });
 
 function RouteComponent() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(true);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
