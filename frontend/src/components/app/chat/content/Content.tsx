@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { BroadcastMessage, PaginatedRooms, PublicUser } from "shared";
 import Arrow from "@/assets/arrow-narrow.svg?react";
-import MessageBubble from "@/components/app/messages/MessageBubble";
-import MessageInput from "@/components/app/messages/MessageInput";
-import { MessageListSkeleton } from "@/components/app/messages/Skeleton";
+import MessageBubble from "@/components/app/chat/messages/MessageBubble";
+import MessageInput from "@/components/app/chat/messages/MessageInput";
+import { MessageListSkeleton } from "@/components/app/chat/messages/Skeleton";
 import { useMobile } from "@/hooks/useMobile";
 import { useWebSocket } from "@/hooks/useWebSocket";
 
@@ -266,7 +266,7 @@ export default function Content({
   }
 
   return (
-    <div className="flex flex-col h-full w-full">
+    <div className="flex flex-col h-full w-full bg-[#1C1F28]">
       {/* Chat header */}
       <div
         className="flex shrink-0 items-center justify-between px-4 h-16"

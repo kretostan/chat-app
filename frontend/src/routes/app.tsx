@@ -1,10 +1,14 @@
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
-import Navigation from "@/components/layout/navigation/Navigation";
 
 export const Route = createFileRoute("/app")({
   beforeLoad: async () => {
     const response = await fetch("/api/auth/profile");
     if (!response.ok) throw redirect({ to: "/auth/login" });
+    if (location.pathname === "/app") {
+      throw redirect({
+        to: "/app/chat",
+      });
+    }
   },
   component: AppLayout,
   errorComponent: () => <div>Error</div>,
@@ -12,10 +16,5 @@ export const Route = createFileRoute("/app")({
 });
 
 function AppLayout() {
-  return (
-    <>
-      <Navigation />
-      <Outlet />
-    </>
-  );
+  return <Outlet />;
 }

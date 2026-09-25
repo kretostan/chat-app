@@ -53,10 +53,7 @@ export default function ConversationList({
   }
 
   return (
-    <ul
-      className="flex flex-col flex-1 divide-y overflow-y-auto w-full max-h-full scrollbar-none"
-      style={{ minWidth: "0px" }}
-    >
+    <ul className="flex flex-col gap-3 items-center w-full overflow-y-auto md:w-80 scrollbar-none h-screen overflow-hidden">
       {rooms.map((room) => {
         const otherMember = room.members.find(
           (member) => member.id !== currentUserId,
@@ -64,12 +61,15 @@ export default function ConversationList({
         const isActive = activeRoomId === room.id;
 
         return (
-          <li key={room.id}>
+          <li
+            key={room.id}
+            className="flex flex-col gap-6 w-full rounded-2xl"
+            style={{ background: isActive ? "#222530" : "#191C24" }}
+          >
             <button
               type="button"
               onClick={() => onSelect(room.id)}
-              className="flex items-center gap-3 py-3.5 px-4 hover:bg-hover cursor-pointer transition-colors duration-100 w-full"
-              style={{ background: isActive ? "var(--active)" : "transparent" }}
+              className="flex items-center gap-3 py-3.5 px-4 cursor-pointer transition-colors duration-100 w-full"
             >
               {/* Avatar */}
               <div
@@ -80,9 +80,9 @@ export default function ConversationList({
                 }}
               >
                 {room.name
-                  ? room.name.charAt(0).toUpperCase()
+                  ? room.name.charAt(0)
                   : otherMember
-                    ? otherMember.username.charAt(0).toUpperCase()
+                    ? otherMember.username.charAt(0)
                     : "?"}
               </div>
 

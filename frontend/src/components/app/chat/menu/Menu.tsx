@@ -1,15 +1,14 @@
 import { useState } from "react";
 import type { ChatRoomDetails, PaginatedRooms } from "shared";
+import Filter from "@/components/app/chat/menu/Filter";
+import SearchInput from "@/components/app/chat/menu/SearchInput";
 import ConversationList from "./ConversationList";
-import MenuHeader from "./MenuHeader";
-import SearchInput from "./SearchInput";
 
 interface MenuProps {
   currentUserId: number;
   data: PaginatedRooms;
   activeRoomId: number | null;
   onSelect: (roomId: number) => void;
-  onNewConversation: () => void;
 }
 
 export default function Menu({
@@ -17,9 +16,8 @@ export default function Menu({
   data,
   activeRoomId,
   onSelect,
-  onNewConversation,
 }: MenuProps) {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   const filterByUser = (room: ChatRoomDetails): boolean => {
     if (!searchQuery.trim()) return true;
@@ -41,16 +39,12 @@ export default function Menu({
   const filteredRooms = data.rooms.filter(filterByUser);
 
   return (
-    <div
-      className="flex flex-col h-full w-full"
-      style={{ background: "var(--color-surface-section)" }}
-    >
-      <MenuHeader onNewConversation={onNewConversation} />
-      <SearchInput
-        value={searchQuery}
-        onChange={setSearchQuery}
-        onNewConversation={onNewConversation}
-      />
+    <div className="flex flex-col gap-3 p-4 w-full md:w-80">
+      <div>
+        <SearchInput value={searchQuery} onChange={setSearchQuery} />
+        <Filter />
+        <h3 className="text-sm uppercase">Aktywne rozmowy</h3>
+      </div>
       <ConversationList
         currentUserId={currentUserId}
         rooms={filteredRooms}
