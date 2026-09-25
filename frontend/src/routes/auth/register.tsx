@@ -4,8 +4,10 @@ import BreathingIndicator from "@/components/auth/BreathingIndicator";
 import Footer from "@/components/auth/Footer";
 import RegisterForm from "@/components/auth/form/RegisterForm";
 import Header from "@/components/auth/Header";
+import { authenticate } from "@/lib/AuthGuard";
 
 export const Route = createFileRoute("/auth/register")({
+  beforeLoad: authenticate,
   component: RouteComponent,
 });
 

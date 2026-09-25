@@ -3,8 +3,10 @@ import BreathingIndicator from "@/components/auth/BreathingIndicator";
 import Footer from "@/components/auth/Footer";
 import LoginForm from "@/components/auth/form/LoginForm";
 import Header from "@/components/auth/Header";
+import { authenticate } from "@/lib/AuthGuard";
 
 export const Route = createFileRoute("/auth/login")({
+  beforeLoad: authenticate,
   component: RouteComponent,
 });
 

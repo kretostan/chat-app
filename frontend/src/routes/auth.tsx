@@ -4,14 +4,8 @@ import Footer from "@/components/layout/footer/Footer";
 import Navigation from "@/components/layout/navigation/Navigation";
 
 export const Route = createFileRoute("/auth")({
-  beforeLoad: async ({ location }) => {
-    if (location.pathname === "/auth")
-      throw redirect({
-        to: "/auth/login",
-        replace: true,
-      });
-    const response = await fetch("/api/auth/profile");
-    if (response.ok) throw redirect({ to: "/app" });
+  beforeLoad: ({ location }) => {
+    if (location.pathname === "/auth") throw redirect({ to: "/auth/login" });
   },
   component: AuthLayout,
 });
