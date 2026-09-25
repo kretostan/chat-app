@@ -1,138 +1,166 @@
 @import "tailwindcss";
 
-/* Dark theme (default) */
+/* Dark theme - default */
 :root {
-  /* === BRAND COLORS === */
+  /* Brand */
   --primary: #2dd09b;
   --secondary: #1fa87a;
-  --tertiary: #5eeac3;
+  --brand-surface: #1e6b45;
+  --on-primary: #04150d;
 
-  /* === SURFACES (BACKGROUNDS) === */
-  --surface-base: #08090d;
-  --surface-section: #11131a;
-  --surface-elevated: #2d2d2d;
-
-  --surface-input: #161820;
+  /* Surfaces */
   --surface-footer: #050608;
+  --surface-base: #08090d;
+  --surface-alt: #0d0e13;
+  --surface-section: #11131a;
+  --surface-input: #161820;
+  --surface-elevated: #191c24;
+  --surface-selected: #222530;
 
-  /* === CHAT SURFACES === */
-  --surface-message-user: #2d323a;
-  --surface-message-answer: #1e6b45;
-  --surface-message-system: #2a2a2a;
-
-  /* === BORDERS === */
+  /* Borders */
   --border-default: #1c1f28;
-  --border-input: #282b35;
 
-  --border-message-user: #3a3a3a;
-  --border-message-answer: #2a8a57;
-  --border-message-system: #3a3a3a;
+  /* Text and icons */
+  --text-strong: #ffffff;
+  --text-primary: #e4e1dc;
+  --text-secondary: #9e9992;
+  --text-muted: #807b75;
+  --icon-muted: #464754;
+  --neutral-medium: #9ea69a;
+  --neutral-light: #b1b4b5;
 
-  /* === TEXT / FOREGROUND === */
-  --foreground-primary: #e4e1dc;
-  --foreground-secondary: #7a7570;
-  --foreground-muted: #5c5852;
+  /* Cyan / informational */
+  --cyan-light: #00cfe2;
+  --cyan: #00a8b8;
+  --cyan-dark: #007782;
+  --cyan-deep: #015064;
+  --info: #30a6db;
+  --info-active: #3caae7;
 
-  /* === STATES === */
-  --hover: #1a1d26;
-  --active: #222530;
-
-  --error: #f87171;
+  /* Status */
   --success: #2ea043;
+  --success-surface: #0a1210;
+  --success-border: #0d2015;
+  --error: #f87171;
+  --error-surface: #1d0c10;
+  --error-border: #351014;
+  --warning: #ffa000;
+  --notice: #ffca28;
 
-  /* === ELEVATION === */
-  --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.3);
-  --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.5);
-
-  /* === OVERLAY === */
-  --overlay-default: rgba(0, 0, 0, 0.6);
+  /* Transparent variants */
+  --text-helper: rgb(228 225 220 / 50%);
+  --text-secondary-alpha: rgb(158 153 146 / 70%);
+  --placeholder: rgb(128 123 117 / 60%);
+  --text-inverse-alpha: rgb(255 255 255 / 70%);
+  --metadata: rgb(255 255 255 / 40%);
+  --info-overlay: rgb(48 166 219 / 10%);
+  --error-overlay: rgb(220 38 38 / 6%);
+  --overlay: rgb(0 0 0 / 60%);
 }
 
-/* Light theme overrides */
+/* Light theme */
 [data-theme="light"] {
-  --primary: #1db87f;
-  --secondary: #19a374;
-  --tertiary: #2dd09b;
+  /* Brand */
+  --primary: #1e6b45;
+  --secondary: #1fa87a;
+  --brand-surface: #2dd09b;
+  --on-primary: #04150d;
 
-  --surface-base: #fcfdfc;
-  --surface-section: #f5f6f4;
-  --surface-elevated: #eff0ed;
+  /* Surfaces */
+  --surface-footer: #e4e1dc;
+  --surface-base: #ffffff;
+  --surface-alt: #f0f4f8;
+  --surface-section: #e6e6e6;
+  --surface-input: #ffffff;
+  --surface-elevated: #f0f4f8;
+  --surface-selected: #d9d9d9;
 
-  --surface-input: #eef0ec;
-  --surface-footer: #eaf0eb;
+  /* Borders */
+  --border-default: #d1d9e6;
 
-  --surface-message-user: #dcece3;
-  --surface-message-answer: #2db87f;
-  --surface-message-system: #e5e7e4;
+  /* Text and icons */
+  --text-strong: #11131a;
+  --text-primary: #1c1f28;
+  --text-secondary: #807b75;
+  --text-muted: #9e9992;
+  --icon-muted: #9ea69a;
+  --neutral-medium: #9ea69a;
+  --neutral-light: #b1b4b5;
+  --text-inverse: #ffffff;
 
-  --border-default: #e4e7e1;
-  --border-input: #d6dac8;
+  /* Cyan / informational */
+  --cyan-light: #00cfe2;
+  --cyan: #00a8b8;
+  --cyan-dark: #007782;
+  --cyan-deep: #015064;
+  --info: #30a6db;
+  --info-active: #3caae7;
 
-  --border-message-user: #c2dcc9;
-  --border-message-answer: #8aefbf;
-  --border-message-system: #d0d5cd;
-
-  --foreground-primary: #141713;
-  --foreground-secondary: #6e756b;
-  --foreground-muted: #9ea69a;
-
-  --hover: #f0f2ee;
-  --active: #e8ead6;
-
+  /* Status */
+  --success: #2ea043;
+  --success-surface: #f2f9f4;
+  --success-border: #dff1e3;
   --error: #dc2626;
-  --success: #16a34a;
+  --error-surface: #fce9e9;
+  --error-border: #f8d4d4;
+  --warning: #ffa000;
+  ---notice: #ffca28;
 
-  --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.06);
-  --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.08);
-
-  --overlay-default: rgba(0, 0, 0, 0.35);
+  /* Transparent variants */
+  --text-helper: rgb(17 19 26 / 70%);
+  --text-secondary-alpha: rgb(128 123 117 / 70%);
+  --placeholder: rgb(158 153 146 / 60%);
+  --border-alpha: rgb(0 0 0 / 10%);
+  --info-overlay: rgb(48 166 219 / 10%);
+  --error-overlay: rgb(220 38 38 / 6%);
+  --overlay: rgb(0 0 0 / 35%);
 }
 
 @theme inline {
-  /* === BRAND COLORS === */
+  /* Brand */
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
-  --color-tertiary: var(--tertiary);
+  --color-brand-surface: var(--brand-surface);
+  --color-on-primary: var(--on-primary);
 
-  /* === SURFACES === */
-  --color-surface-base: var(--surface-base);
-  --color-surface-section: var(--surface-section);
-  --color-surface-elevated: var(--surface-elevated);
-
-  --color-surface-input: var(--surface-input);
+  /* Surfaces */
   --color-surface-footer: var(--surface-footer);
+  --color-surface-base: var(--surface-base);
+  --color-surface-alt: var(--surface-alt);
+  --color-surface-section: var(--surface-section);
+  --color-surface-input: var(--surface-input);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-selected: var(--surface-selected);
 
-  /* === CHAT SURFACES === */
-  --color-surface-message-user: var(--surface-message-user);
-  --color-surface-message-answer: var(--surface-message-answer);
-  --color-surface-message-system: var(--surface-message-system);
-
-  /* === BORDERS === */
+  /* Borders */
   --color-border-default: var(--border-default);
-  --color-border-input: var(--border-input);
 
-  --color-border-message-user: var(--border-message-user);
-  --color-border-message-answer: var(--border-message-answer);
-  --color-border-message-system: var(--border-message-system);
+  /* Text and icons */
+  --color-foreground-strong: var(--text-strong);
+  --color-foreground-primary: var(--text-primary);
+  --color-foreground-secondary: var(--text-secondary);
+  --color-foreground-muted: var(--text-muted);
+  --color-icon-muted: var(--icon-muted);
+  --color-neutral-medium: var(--neutral-medium);
+  --color-neutral-light: var(--neutral-light);
 
-  /* === TEXT === */
-  --color-foreground-primary: var(--foreground-primary);
-  --color-foreground-secondary: var(--foreground-secondary);
-  --color-foreground-muted: var(--foreground-muted);
+  /* Cyan / informational */
+  --color-cyan-light: var(--cyan-light);
+  --color-cyan: var(--cyan);
+  --color-cyan-dark: var(--cyan-dark);
+  --color-dyan-deep: var(--cyan-deep);
+  --color-info: var(--info);
+  --color-info-active: var(--info-active);
 
-  /* === INTERACTION === */
-  --color-hover: var(--hover);
-  --color-active: var(--active);
-
+  /* Status */
   --color-success: var(--success);
+  --color-success-surface: var(--success-surface);
+  --color-success-border: var(--success-border);
   --color-error: var(--error);
-
-  /* === SHADOWS === */
-  --shadow-light: var(--shadow-light);
-  --shadow-medium: var(--shadow-medium);
-
-  /* === OVERLAY === */
-  --color-overlay-default: var(--overlay-default);
+  --color-error-surface: var(--error-surface);
+  --color-error-border: var(--error-border);
+  --color-warning: var(--warning);
+  --color-notice: var(--notice);
 
   /* === TYPOGRAPHY === */
   --font-display: "Playfair Display", Georgia, serif;
@@ -145,15 +173,15 @@ html {
 
 body {
   min-height: 100vh;
-  background: var(--color-surface-base);
-  color: var(--color-foreground-primary);
+  background: var(--surface-base);
+  color: var(--text-strong);
   font-family: var(--font-body);
 }
 
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 100px #161820 inset !important;
   -webkit-text-fill-color: var(--color-foreground-primary) !important;
-  outline-color: var(--color-primary);
+  outline-color: var(--primary);
 }
 
 /* === AUTH BREATHING INDICATOR === */
